@@ -10,7 +10,7 @@ function runOnLoad()
     let element2 = document.createElement("div");
     element2.innerHTML = comp.render();
     container.appendChild(element2);
-    console.log("Hello World truly");
+    console.log("Hello world, truly.");
 }
 
 window.addEventListener("DOMContentLoaded", runOnLoad);
