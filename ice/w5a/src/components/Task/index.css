@@ -1,0 +1,7 @@
+.task  {
+    background: paleturquoise;
+}
+.done {
+    text-decoration: line-through;
+    background: green;
+}

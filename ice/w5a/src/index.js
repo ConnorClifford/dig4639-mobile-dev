@@ -1,5 +1,7 @@
+import Task from "./components/Task/index.js";
 let element = undefined;
 let taskInput = undefined;
+let input;
 
 function runOnLoad()
 {
@@ -7,9 +9,9 @@ function runOnLoad()
     element = document.createElement("div");
     element.id = "container";
     document.body.appendChild(element);
-
+    input = document.getElementById("taskText");
     // Handle adding a new task
-    var addTaskButton = document.getElementById("addTask");
+    let addTaskButton = document.getElementById("addTask");
     addTaskButton.addEventListener("click", onClick)
     
 }
@@ -17,18 +19,13 @@ function runOnLoad()
 function onClick() {
     console.log("clicked!");
 
-    let newTask = document.createElement("div");
-    let input = document.createElement("input");
-    input.type ="checkbox";
-    let span = document.createElement("span");
-    span.innerHTML = taskInput.value;
-    newTask.appendChild(input);
-    newTask.appendChild(span);
-    
-    function onChange(){
-        console.log(span.innerHTML);
+    let newTask = new Task({content:input.value, done:false});
+    if(newTask.content !== ""){
+        element.appendChild(newTask.render());
     }
-    input.addEventListener("change", onChange);
+    else{
+        console.log("Please enter a value.");
+    }
 }
 
 
