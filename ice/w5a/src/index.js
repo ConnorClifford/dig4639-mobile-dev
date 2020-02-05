@@ -20,7 +20,7 @@ function onClick() {
     console.log("clicked!");
 
     let newTask = new Task({content:input.value, done:false});
-    if(newTask.content !== ""){
+    if(input.value !== ""){
         element.appendChild(newTask.render());
     }
     else{
