@@ -11,6 +11,9 @@ function runOnLoad(){
         
         var newTask = new Card({content:"Sample value provided"});    
         
-        element.appendChild(newTask.render());}
+        element.appendChild(newTask.render());
+    
+    }
         
-        window.addEventListener("DOMContentLoaded", runOnLoad);
+        
+window.addEventListener("DOMContentLoaded", runOnLoad);
