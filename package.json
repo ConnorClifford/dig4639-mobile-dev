@@ -17,6 +17,9 @@
   },
   "homepage": "https://github.com/lucidbard/dig4639-mobile-dev#readme",
   "dependencies": {
-    "jest": "^24.9.0"
+    "file-loader": "^5.0.2",
+    "jest": "^24.9.0",
+    "npm-watch": "^0.6.0",
+    "webpack": "^4.41.5"
   }
 }
