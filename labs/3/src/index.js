@@ -9,7 +9,7 @@ function runOnLoad(){
         element.id = "container";    
         document.body.appendChild(element);    
         
-        var newTask = new Card({content:"Sample value provided"});    
+        var newTask = new Card({content:"This is a card"});    
         
         element.appendChild(newTask.render());
     
