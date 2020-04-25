@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Button } from 'react-native-elements';
 
 
 class Add extends Component {
@@ -22,7 +21,7 @@ class Add extends Component {
 
     try{
 
-    fetch("https://plato.mrl.ai:8081/contacts/add", {
+    fetch("http://plato.mrl.ai:8080/contacts/add", {
       "method": "POST",
       "headers": {
         "API": "clifford",
@@ -35,7 +34,11 @@ class Add extends Component {
       })
     })
     .then(response => response.json() )
-    .then((data) => this.setState({added: data.added}) )
+    .then((data) => {
+      this.setState({added: data.added})
+      this.props.attributes({val: this.state.added})
+
+    })
     .catch(err => {
       console.log(err);
     });
@@ -48,9 +51,10 @@ class Add extends Component {
   render() {
     return (
       <div>
+        <h3>Add a contact:</h3>
         <form onSubmit={this.add}>
           Name: <input type="text" ref={this.nameRef}/><br />
-          Number: <input type="text" ref={this.numberRef}/>
+          Number: <input type="text" ref={this.numberRef}/><br />
           <button>Add</button>
         </form>
         <hr />

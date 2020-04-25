@@ -9,9 +9,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <div className="header">
-          <Add />
           <h1>Contacts App</h1>
-          <Profile />
         </div>
         <Contacts />
       </div>

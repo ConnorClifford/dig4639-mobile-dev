@@ -10,6 +10,9 @@ class Add extends Component {
 
     this.state = {removed: {}};
 
+    this.posRef= React.createRef();
+
+
   }
 
 
@@ -17,23 +20,28 @@ class Add extends Component {
 
     event.preventDefault();  
 
-    let removePosition = event.currentTarget.id;
+    let position = this.posRef.current.id;
+    //console.log(position);
+
   
     try{
-        fetch("https://plato.mrl.ai:8081/contacts/remove", {
+        fetch("http://plato.mrl.ai:8080/contacts/remove", {
             "method": "POST",
             "headers": {
-              "api": "example",
+              "api": "clifford",
               "Content-Type": "application/json",
               "Accept": "application/json"
             },
             "body": JSON.stringify({
-              "name": "Jeffg",
-              "number": removePosition
+              "position": position 
             })
           })
         .then(response => response.json() )
-        .then((data) => this.setState({removed: data.removed}) )
+        .then((data) => {
+          this.setState({removed: data.removed});
+          this.props.attributes({val: this.state.removed})
+
+         })
         .catch(err => {
         console.log(err);
         });
@@ -44,7 +52,7 @@ class Add extends Component {
 
  render() {
     return (
-      <span onClick={ this.remove }>remove</span>
+      <span onClick={ this.remove } ref={this.posRef} id={this.props.id}>remove</span>
     );
   }
 
